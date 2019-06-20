@@ -1,33 +1,32 @@
 import React from 'react';
 import './App.css';
 import Login from './components/Login';
-import FriendsList from './components/FriendsList';
+import FriendsListContainer from './components/FriendsListContainer';
 import FriendForm from './components/FriendForm';
 import { connect } from 'react-redux';
-import {
-	fetchFriends,
-	login,
-	addFriend,
-	deleteFriend
-} from './actions/index';
+import { fetchFriends, login, addFriend, deleteFriend } from './actions/index';
 
-function App() {
+function App(props) {
 	return (
 		<div className="App">
-			<Login />
-			<FriendForm />
-			<FriendsList />
+			<Login login={props.login} />
+			<FriendForm addFriend={props.addFriend} />
+			<FriendsListContainer
+				isFetching={props.isFetching}
+				fetchFriends={props.fetchFriends}
+				friends={props.friends}
+				deleteFriend={props.deleteFriend}
+			/>
 		</div>
 	);
 }
+
 const mapStateToProps = state => {
 	return {
 		friends: state.friends,
-		isFetching: state.isFetching,
-		isAuthenticating: state.isAuthenticating
+		isFetching: state.isFetching
 	};
 };
-
 export default connect(
 	mapStateToProps,
 	{
