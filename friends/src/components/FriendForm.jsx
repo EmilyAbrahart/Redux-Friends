@@ -5,13 +5,13 @@ export default function FriendForm(props) {
 	const ageRef = React.createRef();
 	const emailRef = React.createRef();
 
-	const onAddFriend = event => {
+	const onAddFriend = () => {
 		const friendObj = {
 			name: nameRef.current.value,
 			age: ageRef.current.value,
 			email: emailRef.current.value
 		};
-		event.preventDefault();
+	
 		props.addFriend(friendObj);
 	};
 
