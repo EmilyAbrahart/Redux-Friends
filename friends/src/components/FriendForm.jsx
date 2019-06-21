@@ -1,4 +1,5 @@
 import React from 'react';
+import Nav from './Nav';
 
 export default function FriendForm(props) {
 	const nameRef = React.createRef();
@@ -17,6 +18,7 @@ export default function FriendForm(props) {
 
 	return (
 		<div>
+			<Nav />
 			<input type="text" ref={nameRef} />
 			<input type="number" ref={ageRef} />
 			<input type="email" ref={emailRef} />
